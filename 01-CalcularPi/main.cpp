@@ -10,34 +10,28 @@ int potencia (int a, int b){
     return producto;
 }
 
-float calculoPi(int n){
-    float pi = 0;
+float calculoPi(int &n){
+    float pi = 3.141592;
+    float pi1 = 0;
     float denominador = 0;
     float numerador = 0;
     float division;
-    long long int i = 0;
     do{
-        numerador = potencia(-1, i);
-        denominador = 2*i + 1;
+        numerador = potencia(-1, n);
+        denominador = 2*n + 1;
         division = numerador / denominador;
-        pi += 4 * division;
-        i++;
-    }while (i < n);
-    return pi;
+        pi1 += 4 * division;
+        n++;
+    }while (pi != pi1);
+    return pi1;
 }
 
 int main()
 {
-    float pi= 0;
-    long long int n = 0;
-    int d;
-    cout << "Ingrese el numero de iteraciones que desea realizar: " << endl;
-    cin >> n;
-    cout << "Ingrese el numero de decimales que desea ver: " << endl;
-    cin >> d;
-    pi = calculoPi(n);
-    cout.precision(d+1);
-    cout << "Luego de " << n << " iteraciones, el valor de pi en sus primeros " << d << " decimales es de: " << pi << endl;
+    int n = 0;
+    float pi = calculoPi(n);
+    cout.precision(7);
+    cout << "Luego de " << n << " iteraciones, el valor de pi en sus primeros 6 decimales es de: " << pi << endl;
     
     return 0;
 }
